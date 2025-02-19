@@ -1,0 +1,80 @@
+Ejemplo 1:
+	1.	Falta de identificador único en Espacio
+	•	La descripción menciona que cada espacio debe tener un identificador único, pero en el diseño original solo se incluyen tipo, disponible y tarifa.
+	2.	Falta de capacidad máxima en Espacio
+	•	La capacidad máxima es un atributo necesario según la descripción, pero no está en el diseño original.
+	3.	Falta de identificador en Reserva
+	•	No se especifica un id de reserva, lo que podría dificultar la gestión y la cancelación de reservas.
+	4.	Método cancelarReserva(Espacio) en GestorReservas es incorrecto
+	•	La cancelación debería hacerse sobre una reserva específica, no solo un espacio.
+	5.	No se menciona la funcionalidad de liberar reservas
+	•	La descripción menciona que las reservas pueden ser liberadas manualmente por un administrador, lo cual no está representado en el diseño
+
+Solucion: Clase Espacio
+
++ int idEspacio
++ string tipo
++ int capacidadMaxima
++ bool disponible
++ double tarifa
+
+Clase Reserva
+
++ int idReserva
++ Espacio espacio
++ int duracion
++ double calcularCosto()
+
+Clase GestorReservas
+
++ list<Reserva> reservas
++ void consultarDisponibilidad()
++ void realizarReserva(Espacio, int)
++ void calcularCostoTotal(Reserva)
++ void cancelarReserva(Reserva)
++ void liberarReserva(Reserva)
+
+Falta de identificador único en Espacio
+	•	La descripción menciona que cada espacio debe tener un ID único, pero el diseño no lo incluye.
+	2.	No se incluye la capacidad máxima en Espacio
+	•	La descripción del sistema dice que cada espacio tiene una capacidad máxima, pero no está presente en el diseño.
+	3.	Falta de identificador en Reserva
+	•	No se puede identificar cada reserva de manera única porque no tiene un atributo como idReserva.
+	4.	cancelarReserva(Espacio) en GestorReservas es incorrecto
+	•	Una reserva no debería cancelarse con solo el Espacio, sino con una instancia de Reserva.
+	5.	Falta el método liberarReserva(Reserva) en GestorReservas
+	•	La descripción menciona que las reservas deben poder liberarse manualmente, pero esto no está reflejado en el diseño.
+	6.	Falta consultarDisponibilidad() en GestorReservas
+Clase Espacio
+--------------
++ int idEspacio
++ string tipo
++ int capacidadMaxima
++ bool disponible
++ double tarifa
+
+Clase Reserva
+--------------
++ int idReserva
++ Espacio espacio
++ int duracion
++ double calcularCosto()
+
+Clase GestorReservas
+--------------------
++ list<Reserva> reservas
++ void consultarDisponibilidad()
++ void realizarReserva(Espacio, int)
++ void calcularCostoTotal(Reserva)
++ void cancelarReserva(Reserva)
++ void liberarReserva(Reserva)
+
+Ejemplo 3: 
+Falta de identificador único en Espacio
+	•	La descripción menciona que cada espacio debe tener un ID único, pero el diseño no lo incluye.
+	2.	El método estaDisponible() en Espacio es innecesario
+	•	Ya existe el atributo disponible, por lo que un método separado para verificar disponibilidad no es necesario.
+	3.	El método consultarTarifaHora() en Espacio es redundante
+	•	La tarifa ya es un atributo público (tarifa), por lo que no se necesita un método para obtenerla.
+	4.	El método liberar() en Espacio es incorrecto
+	•	La liberación de espacios debe gestionarse a través del GestorReservas, no dentro de Espacio.
